@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:
+    username:
+    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+  #rabbitMQ properties
+  rabbitmq:
+    host:
+    port:
+    username:
+    password:
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.example.demospringbootmqrabbitmq
+  configuration:
+    map-underscore-to-camel-case: true
