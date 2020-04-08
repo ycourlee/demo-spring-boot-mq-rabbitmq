@@ -7,13 +7,29 @@ import java.io.Serializable;
  * @author jy
  */
 public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private Integer id;
 
     private String name;
 
     private String password;
 
-    private static final long serialVersionUID = 1L;
+    public User(){}
+
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 
     public Integer getId() {
         return id;

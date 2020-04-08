@@ -1,6 +1,8 @@
 package com.example.demospringbootmqrabbitmq;
 
+import com.example.demospringbootmqrabbitmq.pojo.User;
 import org.junit.jupiter.api.Test;
+import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +17,9 @@ class DemoSpringBootMqRabbitmqApplicationTests {
     @Autowired
     RabbitTemplate rabbitTemplate;
 
+    @Autowired
+    AmqpAdmin amqpAdmin;
+
     @Test
     void contextLoads() {
     }
@@ -24,7 +29,7 @@ class DemoSpringBootMqRabbitmqApplicationTests {
         Map<String, Object> map = new HashMap<>();
         map.put("msg","this is a message!");
         map.put("data", Arrays.asList("hello",123,false));
-        rabbitTemplate.convertAndSend("jy.amq.direct", "jiangyong.news", map);
+        rabbitTemplate.convertAndSend("jy.amq.direct", "jiangyong.news", new User("jy","123"));
     }
 
     @Test
@@ -33,5 +38,10 @@ class DemoSpringBootMqRabbitmqApplicationTests {
         System.out.println(o);
         assert o != null;
         System.out.println(o.toString());
+    }
+
+    @Test
+    void setAmqpAdmin(){
+
     }
 }
